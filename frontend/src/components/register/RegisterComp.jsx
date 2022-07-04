@@ -1,0 +1,78 @@
+// react imports
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+// firebase imports
+import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../firestore/firestore";
+
+// style
+import "./Register.css";
+function Register() {
+  // user data states
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  // firebase registration function
+  const register = () => {
+    if (!name) alert("Please enter name");
+    registerWithEmailAndPassword(name, email, password);
+  };
+
+  // load profile on registration completion
+  useEffect(() => {
+    if (loading) return;
+    console.log(user);
+    if (user) navigate("/profile");
+  }, [user, loading]);
+
+  return (
+    <div className="register">
+      <div className="register__container">
+        <input
+          type="text"
+          className="register__textBox"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Full Name"
+        />
+        <input
+          type="text"
+          className="register__textBox"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="E-mail Address"
+        />
+        <input
+          type="password"
+          className="register__textBox"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
+        <button className="register__btn" onClick={register}>
+          Register
+        </button>
+        <button
+          className="register__btn register__google"
+          onClick={signInWithGoogle}
+        >
+          Register with Google
+        </button>
+
+        <div>
+          Already have an account? <Link to="/login">Login</Link> now.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Register;
