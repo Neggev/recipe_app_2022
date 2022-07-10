@@ -40,6 +40,13 @@ app.use(passport.initialize());
 app.use("/search", searchRouter)
 app.use("/user", userRouter)
 
+
+if (process.env.NODE_ENV !== 'production') {
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "..", "frontend", "build", "index.html"))
+    })
+}
+
 app.listen(PORT, () => {
     console.log("server starting..." + PORT);
 });
