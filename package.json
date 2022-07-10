@@ -1,0 +1,21 @@
+{
+  "name": "recipe_app_2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server.js",
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neggev/recipe_app_2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neggev/recipe_app_2022/issues"
+  },
+  "homepage": "https://github.com/Neggev/recipe_app_2022#readme"
+}

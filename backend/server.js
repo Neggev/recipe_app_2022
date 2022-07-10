@@ -18,25 +18,25 @@ const userRouter = require('./routes/user.route')
 
 
 const app = express();
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
+
+
 
 
 //middleware
+
+const buildPath = path.join(__dirname, '..', 'build')
 
 app.use(cors({
     origin: '*'
 }));
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-
-
-
-
+app.use(express.static(buildPath));
 app.use(passport.initialize());
 
 
-
+// routes
 app.use("/search", searchRouter)
 app.use("/user", userRouter)
 
