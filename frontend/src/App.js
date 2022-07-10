@@ -29,6 +29,7 @@ function App() {
       {/* Routes */}
       <Routes>
         <Route index element={<Landing />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/about" element={<About />} />
