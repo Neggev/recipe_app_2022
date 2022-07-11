@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "personal-recipe-app.herokuapp.com",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -28,10 +29,10 @@
   },
   "scripts": {
     "start-client": "react-scripts start",
-    "build": "react-scripts build && (cd ../backend && npm install)",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "cd ../backend && npm start"
+    "start": "cd ../backend && npm start && npm run start-client"
   },
   "eslintConfig": {
     "extends": [

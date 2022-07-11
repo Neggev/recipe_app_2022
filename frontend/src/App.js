@@ -28,7 +28,7 @@ function App() {
       <Appbar />
       {/* Routes */}
       <Routes>
-        <Route index element={<Landing />} />
+        <Route exact path="/" element={<Landing />} />
         <Route path="/" element={<Landing />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/profile" element={<Profile />} />
