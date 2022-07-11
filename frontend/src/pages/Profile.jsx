@@ -109,10 +109,13 @@ function Profile() {
       setAvatar(reader.result);
     };
 
-    const getData = await axios.post(`http://localhost:8000/user/avatar`, {
-      image: avatar,
-      name: id,
-    });
+    const getData = await axios.post(
+      `personal-recipe-app.herokuapp.com/user/avatar`,
+      {
+        image: avatar,
+        name: id,
+      }
+    );
     try {
       updateAvatar(getData.data.url);
     } catch (error) {
